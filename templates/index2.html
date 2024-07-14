@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Food Entry</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Food Entry</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="measure">Measure:</label>
+                <input type="text" id="measure" name="measure" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="grams">Grams:</label>
+                <input type="number" id="grams" name="grams" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="calories">Calories:</label>
+                <input type="number" id="calories" name="calories" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="protein">Protein (g):</label>
+                <input type="number" id="protein" name="protein" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="fat">Fat (g):</label>
+                <input type="number" id="fat" name="fat" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="saturated_fat">Saturated Fat (g):</label>
+                <input type="number" id="saturated_fat" name="saturated_fat" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="fiber">Fiber (g):</label>
+                <input type="number" id="fiber" name="fiber" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="carbohydrates">Carbohydrates (g):</label>
+                <input type="number" id="carbohydrates" name="carbohydrates" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" class="form-control" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
