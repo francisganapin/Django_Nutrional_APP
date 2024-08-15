@@ -25,14 +25,13 @@ def food_view(request):
         data = json.load(file)
 
     # Create a Paginator object with your data
-    paginator = Paginator(data, 10)  # Show 10 items per page
+
 
     # Get the current page number from the request
-    page_number = request.GET.get('page')
-    page = paginator.get_page(page_number)
 
+   
     # Pass the paginated data to the template
-    return render(request, 'index.html', {'data': page})
+    return render(request, 'index.html', {'data': data})
 
 def success_page(request):
     return render(request, 'success.html')
@@ -73,15 +72,6 @@ def food_add_view(request):
         
     # If request method is GET, render the form page
     return render(request, 'index2.html')
-
-
-
-
-
-
-
-
-
 
 
 def food_remove_view(request):

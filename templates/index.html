@@ -38,97 +38,80 @@
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Food Data</h1>
-        <div class="search-container">
-            <input type="text" id="search" class="form-control" placeholder="Search...">
-            <select id="category" class="form-control">
-                <option value="all">All</option>
-                <option value="name">Name</option>
-                <option value="measure">Measure</option>
-                <option value="grams">Grams</option>
-                <option value="calories">Calories</option>
-                <option value="protein">Protein</option>
-                <option value="fat">Fat</option>
-                <option value="saturated_fat">Saturated Fat</option>
-                <option value="fiber">Fiber</option>
-                <option value="carbohydrates">Carbohydrates</option>
-                <option value="category">Category</option>
-            </select>
-</div>
-        </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Measure</th>
-                    <th>Grams</th>
-                    <th>Calories</th>
-                    <th>Protein</th>
-                    <th>Fat</th>
-                    <th>Saturated Fat</th>
-                    <th>Fiber</th>
-                    <th>Carbohydrates</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody id="milk-data">
-                {% for item in data %}
-                <tr>
-                    <td class="name">{{ item.name }}</td>
-                    <td class="measure">{{ item.measure }}</td>
-                    <td class="grams">{{ item.grams }}</td>
-                    <td class="calories">{{ item.calories }}</td>
-                    <td class="protein">{{ item.protein }}</td>
-                    <td class="fat">{{ item.fat }}</td>
-                    <td class="saturated_fat">{{ item.saturated_fat }}</td>
-                    <td class="fiber">{{ item.fiber }}</td>
-                    <td class="carbohydrates">{{ item.carbohydrates }}</td>
-                    <td class="category">{{ item.category }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            
-            <div class="pagination">
-                <span class="step-links">
-                    {% if data.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ data.previous_page_number }}">previous</a>
-                    {% endif %}
-            
-                    <span class="current-page">{{ data.number }}</span>
-            
-                    {% if data.has_next %}
-                        <a href="?page={{ data.next_page_number }}">next</a>
-                        <a href="?page={{ data.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
-            </div>
-        </table>
-    </div>
-</body>
 </html>
+
+
+<div class="container">
+    <h1>Food Data</h1>
+
+    <div class="search-container">
+        <input type="text" id="myInput" class="form-control" placeholder="Search..." onkeyup="myFunction()">
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Measure</th>
+                <th>Grams</th>
+                <th>Calories</th>
+                <th>Protein</th>
+                <th>Fat</th>
+                <th>Saturated Fat</th>
+                <th>Fiber</th>
+                <th>Carbohydrates</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        
+<article class="content">
+        <tbody id="table-data">
+            {% for item in data %}
+            <tr>
+                <td class="name">{{ item.name }}</td>
+                <td class="measure">{{ item.measure }}</td>
+                <td class="grams">{{ item.grams }}</td>
+                <td class="calories">{{ item.calories }}</td>
+                <td class="protein">{{ item.protein }}</td>
+                <td class="fat">{{ item.fat }}</td>
+                <td class="saturated_fat">{{ item.saturated_fat }}</td>
+                <td class="fiber">{{ item.fiber }}</td>
+                <td class="carbohydrates">{{ item.carbohydrates }}</td>
+                <td class="category">{{ item.category }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</article>
+
+    </table>
+
+
+
+
+
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('search');
-        const categorySelect = document.getElementById('category');
-        const tableRows = document.querySelectorAll('#milk-data tr');
-
-        function filterTable() {
-            const searchText = searchInput.value.toLowerCase();
-            const category = categorySelect.value;
-
-            tableRows.forEach(row => {
-                const td = row.querySelector(`.${category}`);
-                if (td) {
-                    const textValue = td.textContent.toLowerCase();
-                    row.style.display = textValue.includes(searchText) ? '' : 'none';
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, rows, i, txtValue;
+        input = document.getElementById('myInput'); // Updated to match the correct ID
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table-data");
+        rows = table.getElementsByTagName('tr');
+    
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < rows.length; i++) { // Updated to start from 0
+            let nameColumn = rows[i].getElementsByTagName("td")[0]; // Assuming you want to filter by Name (1st column)
+        
+            if (nameColumn) {
+                let nameValue = nameColumn.textContent || nameColumn.innerText;
+                txtValue = (nameValue).toUpperCase(); // Filter by the name
+                if (txtValue.indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
                 }
-            });
+            }
         }
-
-        searchInput.addEventListener('input', filterTable);
-        categorySelect.addEventListener('change', filterTable);
-    });
+    }
 </script>
