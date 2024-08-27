@@ -1,0 +1,2 @@
+Aug 8/28/2024
+    - ability to disable double item add

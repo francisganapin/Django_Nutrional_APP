@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from nutrional_json.settings import BASE_DIR
-from django.core.paginator import Paginator, Page
+
 
 
 from django.core.paginator import Paginator
@@ -34,6 +34,8 @@ def success_page(request):
 
 
 def food_add_view(request):
+
+    message = ''
     if request.method == 'POST':
         form_data = {
             'name': request.POST.get('name'),
@@ -50,25 +52,28 @@ def food_add_view(request):
         }
         
         json_file_path = os.path.join('static', 'data.json')
-        
+
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as f:
-                data = json.load(f)
+                        data = json.load(f)
         else:
-            data = []
-        
-        data.append(form_data)
-        
-        with open(json_file_path, 'w') as f:
-            json.dump(data, f, indent=4)
-        
-        # Redirect to the success page after successful form submission
-        # it would go for data of foods
+                    data = []
 
-        return redirect('food_view')
+        #check if item is already exist
+        existing_names = {item['name'] for item in data}
+        if form_data['name'] in existing_names:
+            print('sorry this item already exist')
+            message = f'{form_data['name']} is already exist'
+        else:
+            print('congrats for uploading')
+            
+            with open(json_file_path, 'w') as f:
+                json.dump(data, f, indent=4)
+            
+            return redirect('food_view')
         
     # If request method is GET, render the form page
-    return render(request, 'index2.html')
+    return render(request, 'index2.html',{'message':message})
 
 
 def food_remove_view(request):
