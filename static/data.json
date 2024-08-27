@@ -3862,5 +3862,17 @@
         "fiber": "0",
         "carbohydrates": "1",
         "category": "Drinks,Alcohol, Beverages"
+    },
+    {
+        "name": "Sphagetti",
+        "measure": "1 ounce",
+        "grams": "500",
+        "calories": "900",
+        "protein": "9",
+        "fat": "5",
+        "saturated_fat": "2",
+        "fiber": "3",
+        "carbohydrates": "30",
+        "category": "Fast Food"
     }
 ]

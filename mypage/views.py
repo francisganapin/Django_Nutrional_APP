@@ -11,7 +11,6 @@ from django.core.paginator import Paginator, Page
 
 from django.core.paginator import Paginator
 
-
 def food_view(request):
     # Construct the full file path within the static directory
     json_file_path = os.path.join('static', 'data.json')
@@ -25,11 +24,7 @@ def food_view(request):
         data = json.load(file)
 
     # Create a Paginator object with your data
-
-
     # Get the current page number from the request
-
-   
     # Pass the paginated data to the template
     return render(request, 'index.html', {'data': data})
 
@@ -68,7 +63,9 @@ def food_add_view(request):
             json.dump(data, f, indent=4)
         
         # Redirect to the success page after successful form submission
-        return redirect('success_page')
+        # it would go for data of foods
+
+        return redirect('food_view')
         
     # If request method is GET, render the form page
     return render(request, 'index2.html')

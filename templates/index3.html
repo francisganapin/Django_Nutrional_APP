@@ -20,13 +20,7 @@
                     <div class="col-md-6 mb-3">
                         <input type="text" id="search" class="form-control" placeholder="Search..." name="search" value="{{ search_input }}">
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <select id="category" class="form-control" name="category">
-                            <option value="all" {% if not category_input %}selected{% endif %}>All</option>
-                            <option value="name" {% if category_input == 'name' %}selected{% endif %}>Name</option>
-                            <option value="category" {% if category_input == 'category' %}selected{% endif %}>Category</option>
-                        </select>
-                    </div>
+               
                 </div>
                 <button type="submit" class="btn btn-primary">Apply Filters</button>
             </form>
@@ -57,7 +51,9 @@
                         <td>{{ item.measure }}</td>
                         <td>{{ item.grams }}</td>
                         <td>{{ item.calories }}</td>
-                        <td>{{ item.protein }}</td>
+                        <td>{{ item.p
+                            
+                            rotein }}</td>
                         <td>{{ item.fat }}</td>
                         <td>{{ item.saturated_fat }}</td>
                         <td>{{ item.fiber }}</td>
