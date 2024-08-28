@@ -178,3 +178,25 @@ def food_delete_view(request):
         
     # If request method is GET, render the form page
     return render(request, 'delete_food.html',{'message':message})
+
+
+
+def bmiCalculator_views(request):
+     
+    if request.method == 'POST':
+        
+        the_weight    = float(request.POST.get('weight'))
+        the_height    = float(request.POST.get('height'))
+        
+        the_BMI = the_weight / (the_height/100)**2  
+
+        if the_BMI <= 18.15:
+            message = f'you under weight'
+        elif the_BMI <= 24.9:
+            message = f'you are healthy'
+        elif the_BMI <= 29.9:
+             message = f'you over weight'
+        else:
+             message = f'Go diet and Gym'
+
+    return render(request,'calculate_ibm.html',{'message':message})
