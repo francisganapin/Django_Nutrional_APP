@@ -1,53 +1,5 @@
 [
     {
-        "name": "(1/2 cup ice cream)",
-        "measure": "2 cups",
-        "grams": "540",
-        "calories": "690",
-        "protein": "24",
-        "fat": "24",
-        "saturated_fat": "22",
-        "fiber": "0",
-        "carbohydrates": "70",
-        "category": "Dairy products"
-    },
-    {
-        "name": "Cocoa",
-        "measure": "1 cup",
-        "grams": "252",
-        "calories": "235",
-        "protein": "8",
-        "fat": "11",
-        "saturated_fat": "10",
-        "fiber": "0",
-        "carbohydrates": "26",
-        "category": "Dairy products"
-    },
-    {
-        "name": "skim. milk",
-        "measure": "1 cup",
-        "grams": "250",
-        "calories": "128",
-        "protein": "18",
-        "fat": "4",
-        "saturated_fat": "3",
-        "fiber": "1",
-        "carbohydrates": "13",
-        "category": "Dairy products"
-    },
-    {
-        "name": "(cornstarch)",
-        "measure": "1 cup",
-        "grams": "248",
-        "calories": "275",
-        "protein": "9",
-        "fat": "10",
-        "saturated_fat": "9",
-        "fiber": "0",
-        "carbohydrates": "40",
-        "category": "Dairy products"
-    },
-    {
         "name": "Custard",
         "measure": "1 cup",
         "grams": "248",

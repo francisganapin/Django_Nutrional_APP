@@ -3,124 +3,110 @@
 {% block title %}Classes{% endblock %}
 
 {% block content %}
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody {
+        display: block;
+        max-height: 400px; /* Limit height for scrolling */
+        overflow-y: auto;
+        width: 100%;
+    }
+
+    .styled-table thead,
+    .styled-table tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    .styled-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Data</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-    body {
-    padding-top: 20px;
-}
 
-.container {
-    max-width: 1500px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px; /* Add padding for better spacing */
-}
-
-.container_color {
-    background-color: bisque;
-    padding: 20px;
-    min-height: 100vh; /* Ensure the background covers at least the full viewport height */
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #dee2e6;
-}
-
-thead th {
-    background-color: #f8f9fa;
-}
-
-/* Optional: Add hover effect to table rows */
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-.search-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.search-container input, .search-container select {
-    margin: 5px;
-}
+<div class="">
+    <div class="">
+        <h1 class="text-center mb-5 text-6xl">Food Data</h1>
 
 
-    </style>
-</head>
-</html>
+        <div class="">
+            <input type="text" id="myInput" class="form-control" placeholder="Search..." onkeyup="myFunction()">
+        </div>
 
-<body>
-<div class="container_color">
-<div class="container">
-    <h1>Food Data</h1>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Measure</th>
+                    <th>Grams</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Fat</th>
+                    <th>Saturated Fat</th>
+                    <th>Fiber</th>
+                    <th>Carbohydrates</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
 
-    <div class="search-container">
-        <input type="text" id="myInput" class="form-control" placeholder="Search..." onkeyup="myFunction()">
+            <tbody id="table-data">
+                {% for item in data %}
+                <tr>
+                    <td class="name">{{ item.name }}</td>
+                    <td class="measure">{{ item.measure }}</td>
+                    <td class="grams">{{ item.grams }}</td>
+                    <td class="calories">{{ item.calories }}</td>
+                    <td class="protein">{{ item.protein }}</td>
+                    <td class="fat">{{ item.fat }}</td>
+                    <td class="saturated_fat">{{ item.saturated_fat }}</td>
+                    <td class="fiber">{{ item.fiber }}</td>
+                    <td class="carbohydrates">{{ item.carbohydrates }}</td>
+                    <td class="category">{{ item.category }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     </div>
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Measure</th>
-                <th>Grams</th>
-                <th>Calories</th>
-                <th>Protein</th>
-                <th>Fat</th>
-                <th>Saturated Fat</th>
-                <th>Fiber</th>
-                <th>Carbohydrates</th>
-                <th>Category</th>
-            </tr>
-        </thead>
-
-<article class="content">
-        <tbody id="table-data">
-            {% for item in data %}
-            <tr>
-                <td class="name">{{ item.name }}</td>
-                <td class="measure">{{ item.measure }}</td>
-                <td class="grams">{{ item.grams }}</td>
-                <td class="calories">{{ item.calories }}</td>
-                <td class="protein">{{ item.protein }}</td>
-                <td class="fat">{{ item.fat }}</td>
-                <td class="saturated_fat">{{ item.saturated_fat }}</td>
-                <td class="fiber">{{ item.fiber }}</td>
-                <td class="carbohydrates">{{ item.carbohydrates }}</td>
-                <td class="category">{{ item.category }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-</article>
-
-    </table>
-
 </div>
-
-</div>
-
-</body>
-
 
 
 <script>

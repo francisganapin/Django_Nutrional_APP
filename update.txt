@@ -1,3 +1,4 @@
 Aug 8/28/2024
     - ability to disable double item add
     - ability to delete item if item not exist it will notify you
+    - We have BMI Calculator now

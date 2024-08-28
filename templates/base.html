@@ -5,91 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Site{% endblock %}</title>
     <style>
+        /* General body styling */
+        body.container_color {
+            background-color: 	#FFE4C4;
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
         /* Navbar container */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial;
-}
+        .navbar {
+            overflow: hidden;
+            background-color: #007bff;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
 
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 30px 24px;
-  text-decoration: none;
-}
+        /* Links inside the navbar */
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding:20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 5px;
+        }
 
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
+        /* Add a background color to navbar links on hover */
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
 
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 30px 24px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
+        /* Main content styling */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
+        /* Navbar alignment fix */
+        .navbar a:last-child {
+            margin-right: 0;
+        }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+        /* Block content padding */
+        .content {
+            padding-top: 10px;
+        }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 30px 24px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
+        /* Additional CSS from your previous styles */
+        /* Container styling */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
+        /* Form heading */
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+        /* Form group styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Label styling */
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Input field styling */
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        /* Input field focus styling */
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Submit button styling */
+        .btn.btn-primary {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Submit button hover effect */
+        .btn.btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Message display styling */
+        h1#Clear {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Food Data Section */
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Search container */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .table tbody td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-striped tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 10px;
+            }
+
+            .form-control {
+                font-size: 14px;
+            }
+
+            .btn.btn-primary {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .table thead th,
+            .table tbody td {
+                padding: 8px;
+            }
+
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: left;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .navbar {
+                border-radius: 0;
+            }
+        }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
 
+<body class="container_color">
     <div class="navbar">
-        <a href="">Home</a>
+        <a href="#">Home</a>
+        <a href="{% url 'food_add_view' %}">Add Food</a>
+        <a href="{% url 'bmiCalculator_views' %}">BMI Calculator</a>
+        <a href="{% url 'food_delete_view' %}">Delete Food</a>
+        <a href="{% url 'food_view' %}">List of Food</a>
+    </div>
 
-      </div>
-
-     
-
-<div class="content">
-    {% block content %}
-    <!-- Main content goes here -->
-    {% endblock %}
-    
-</div>
+    <div class="content">
+        {% block content %}
+        <!-- Main content goes here -->
+        {% endblock %}
+    </div>
 </body>
 </html>
