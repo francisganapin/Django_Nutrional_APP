@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Food Entry</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px; /* Add padding for better spacing */
+}
+
+.container_color {
+    background-color: bisque;
+    padding: 20px;
+    min-height: 100vh; /* Ensure the background covers at least the full viewport height */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+}
+
+thead th {
+    background-color: #f8f9fa;
+}
+
+/* Optional: Add hover effect to table rows */
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container input, .search-container select {
+    margin: 5px;
+}
+
+.container_color {
+    background-color: bisque;
+    padding: 20px;
+    min-height: 100vh; /* Ensure the background covers at least the full viewport height */
+}
+
+    </style>
+</head>
+<body class="container_color">
+    <div class="container">
+        <h2>Add Food Entry</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>         
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <h1>{{ message }}</h1>
+</body>
+</html>

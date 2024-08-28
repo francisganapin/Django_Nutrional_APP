@@ -26,7 +26,7 @@ def food_view(request):
     # Create a Paginator object with your data
     # Get the current page number from the request
     # Pass the paginated data to the template
-    return render(request, 'index.html', {'data': data})
+    return render(request, 'list_food.html', {'data': data})
 
 def success_page(request):
     return render(request, 'success.html')
@@ -73,7 +73,7 @@ def food_add_view(request):
             return redirect('food_view')
         
     # If request method is GET, render the form page
-    return render(request, 'index2.html',{'message':message})
+    return render(request, 'add_food.html',{'message':message})
 
 
 def food_remove_view(request):
@@ -141,3 +141,40 @@ def food_remove_view(request):
 
 
 
+def food_delete_view(request):
+
+    message = ''
+    if request.method == 'POST':
+        form_data = {
+            'name': request.POST.get('name'),
+          
+            # Add other fields here based on your form
+        }
+        
+        json_file_path = os.path.join('static', 'data.json')
+
+        if os.path.exists(json_file_path):
+            with open(json_file_path, 'r') as f:
+                        data = json.load(f)
+        else:
+                    data = []
+
+        #check if item is already exist
+        existing_names = {item['name'] for item in data}
+        if form_data['name'] not in existing_names:
+            print('sorry this item  does not exist')
+            message = f'{form_data['name']} is not  exist'
+        else:
+            print('congrats for deleting')
+            #check if item exist  so wecan delete
+            data =[item for item in data if item['name'] != form_data['name']]
+
+
+
+            with open(json_file_path, 'w') as f:
+                json.dump(data, f, indent=4)
+            
+            return redirect('food_view')
+        
+    # If request method is GET, render the form page
+    return render(request, 'delete_food.html',{'message':message})
